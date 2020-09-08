@@ -1,10 +1,7 @@
 <template>
   <div class="container mt-4">
     <div class="row justify-content-center">
-      <div
-        class="col-md-8"
-        v-if="user !== null && user.uid == userID"
-      >
+      <div class="col-md-8" v-if="user !== null && user.uid == userID">
         <h1 class="font-weight-light text-center">Attendees</h1>
 
         <div class="card bg-light mb-4">
@@ -46,10 +43,7 @@
       >
         <div class="card">
           <div class="card-body px-3 py-2 d-flex align-items-center justify-content-center">
-            <div
-              class="btn-group pr-2"
-              v-if="user !== null && user.uid == userID"
-            >
+            <div class="btn-group pr-2" v-if="user !== null && user.uid == userID">
               <button
                 class="btn btn-sm"
                 :class="[
@@ -74,7 +68,6 @@
               >
                 <font-awesome-icon icon="trash"></font-awesome-icon>
               </button>
-
             </div>
             <div>{{item.displayName}}</div>
           </div>
@@ -93,7 +86,7 @@ export default {
     return {
       attendees: [],
       displayAttendees: [],
-      searchQuery: "",
+      searchQuery: "" /* search for an empty string as the default */,
       userID: this.$route.params.userID,
       meetingID: this.$route.params.meetingID
     };
@@ -101,7 +94,12 @@ export default {
   components: {
     FontAwesomeIcon
   },
+  /* computed, allow us to create a variable that is based on the value of something else*/
   computed: {
+    /*  
+    filter method in JavaScript. to push some data through, 
+    and then you use that filter method to filter a series of records
+    */
     filteredAttendees: function() {
       const dataFilter = item =>
         item.displayName.toLowerCase().match(this.searchQuery.toLowerCase()) &&
