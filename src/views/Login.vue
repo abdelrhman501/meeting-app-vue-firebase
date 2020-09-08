@@ -46,7 +46,7 @@
 <script>
 import Firebase from "firebase";
 export default {
-  data: function() {
+  data() {
     return {
       email: "",
       password: "",
@@ -60,16 +60,41 @@ export default {
         password: this.password
       };
       Firebase.auth()
-        .signInWithEmailAndPassword(info.email, info.password)
-        .then(
-          () => {
-            this.$router.push("meetings");
-          },
-          error => {
-            this.error = error.message;
-          }
-        );
+        .signInWithEmailAndPassword(info.email, this.password)
+        .then(() => {
+          this.$router.push("meetings");
+        })
+        .catch(err => {
+          this.error = err.message;
+        });
     }
   }
 };
+// export default {
+//   data: function() {
+//     return {
+//       email: "",
+//       password: "",
+//       error: ""
+//     };
+//   },
+//   methods: {
+//     login: function() {
+//       const info = {
+//         email: this.email,
+//         password: this.password
+//       };
+//       Firebase.auth()
+//         .signInWithEmailAndPassword(info.email, info.password)
+//         .then(
+//           () => {
+//             this.$router.push("meetings");
+//           },
+//           error => {
+//             this.error = error.message;
+//           }
+//         );
+//     }
+//   }
+// };
 </script>
