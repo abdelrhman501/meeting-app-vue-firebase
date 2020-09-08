@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <Navigation @logout="logout" />
+    <Navigation
+      :user="user"
+      @logout="logout"
+    />
     <router-view
       class="container"
       :user="user"
@@ -13,6 +16,7 @@
     />
   </div>
 </template>
+
 <script>
 import Navigation from "@/components/Navigation.vue";
 import Firebase from "firebase";
@@ -114,7 +118,8 @@ export default {
 };
 </script>
 
+
 <style lang="scss">
-$primary: rgb(17, 197, 221);
+$primary: #05b2dd;
 @import "node_modules/bootstrap/scss/bootstrap";
 </style>
