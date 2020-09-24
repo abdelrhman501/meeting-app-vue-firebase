@@ -1,4 +1,7 @@
-# vue-spa
+# vue-spa-firebase
+
+# Demo  at 
+See [Demo](https://meetings-67ffb.web.app/).
 
 ## Project setup
 ```
